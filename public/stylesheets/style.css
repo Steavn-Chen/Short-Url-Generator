@@ -1,0 +1,11 @@
+#short-btn::before {
+  /* background-color:tomato; */
+  margin-top: 5px;
+  border: 1px groove tomato;
+}
+
+#short-btn::after {
+  /* background-color:tomato; */
+  margin-top: 5px;
+  border: 5px inset tomato;
+}

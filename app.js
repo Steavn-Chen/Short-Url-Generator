@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const { getShortUrl } = require('./tools/generator')
 
 const app = express()
+const hostname = process.env.BASE_URL || "localhost:3000";
 const PORT = process.env.PORT || 3000
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/short-url-generator'
 const URL = require('./models/url.js')
@@ -32,6 +33,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
+  console.log(hostname, PORT, MONGODB_URI);
   res.render('index')
 })
 //  沒有找到就創建，但創建好的資料得 加 .toJSON()，不然會報錯
@@ -42,7 +44,7 @@ app.post('/', (req, res) => {
     return res.render("index", { error_msg: error_msg });
   }
   // 第一種寫法 findOrCreate
-  URL.findOrCreate({ name: req.body.url }, { name: req.body.url, url: getShortUrl() })
+  URL.findOrCreate({ name: req.body.url }, { name: req.body.url, url: `${hostname}/${getShortUrl()}` })
     .then((result) => {
       res.render("index", { shortUrl: result[0].toJSON() });
     })
@@ -75,11 +77,12 @@ app.post('/', (req, res) => {
 
 app.get("/:short", (req, res) => {
   const params = req.params.short;
-  console.log(params);
-  URL.findOne({ url: `https://shrot-url-generator.herokuapp.com/${params}` }).then((result) => {
-    console.log(result);
+  console.log('params',params);
+  URL.findOne({ url: `${hostname}/${params}` }).then((result) => {
+    console.log("result", result);
     // res.redirect('/')
     res.redirect(result.name);
+    // res.redirect(`/${result.name}`);
   });
 });
 

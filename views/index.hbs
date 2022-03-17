@@ -1,18 +1,91 @@
 <div class="container mt-5">
-  {{!-- <div class="shortener d-flex flex-column justify-content-center border border-1"> --}}
+  <form action="/" method="post" class="needs-validation" novalidate>
     <div class="shortener d-flex flex-column align-items-center border border-1">
       <h1 style="font-family: 'Kanit', sans-serif;">URL Shortener</h1>
-      {{!-- <div class="d-flex justify-content-center"> --}}
-        <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
-          class="img-thumbnail my-5" alt="..." style="width:200px">
-        {{!--
-      </div> --}}
-      <div class="col-8 mt-5">
-        <input class="form-control form-control-lg" type="text" placeholder="Input URL here"
-          aria-label=".form-control-lg example">
+      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
+        class="img-thumbnail my-5" alt="..." style="width:200px">
+
+      {{#if shortUrl}}
+      <h2 style="font-family: 'Kanit', sans-serif;" class="mt-5">Success! Please use this link.</h2>
+      <a href="{{shortUrl.name}}">{{shortUrl.url}}</a>
+      <div class="col-3 d-grid mt-3">
+        <input type="url" name="" id="copyUrl" value="{{shortUrl.url}}" hidden>
+        <button type="button" class="btn btn-outline-primary" id="copyBtn">Copy</button>
+        {{!-- <button type="button" class="btn btn-outline-primary" id="copyBtn" onclick="myFunction()">Copy</button>
+        --}}
+
+
+
+        {{!-- 複制按紐 input --}}
+        <div class="clipboard-example align-items-center w-50">
+          <div class="input-group mb-3">
+            <input id="in01" type="text" class="form-control" placeholder="BTC Address..." aria-label="BTC Address"
+              aria-describedby="btn01" value="{{shortUrl.url}}" readonly>
+            <button id="btn01" class="btn btn-secondary" type="button" data-clipboard-demo=""
+              data-clipboard-target="#in01" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              title="Copy to Clipboard">Copy</button>
+          </div>
+        </div>
+
+
       </div>
-      {{!-- </div> --}}
-      <button type="button"  class="btn btn-outline-primary mt-3 col-4" >Shorten</button>
-      {{!-- <button type="button"  id="short-btn">Shorten</button> --}}
+      {{else}}
+      <div class="col-md-6 mt-5">
+        <input class="form-control form-control-lg" type="url" placeholder="Input URL here"
+          aria-label=".form-control-lg example" name="url" required>
+        <div class="invalid-feedback">
+          請輸入正確的網址 !
+        </div>
+        <div class="valid-feedback">
+          輸入的網址正確。
+        </div>
+      </div>
+      <div class="col-3 d-grid mt-3">
+        <button type="submit" class="btn btn-outline-primary">Shorten</button>
+      </div>
+      {{/if}}
+
     </div>
-  </div>
+  </form>
+</div>
+
+
+
+<script>
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          console.log(event)
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+
+  // 複製按紐 javascript
+  let btn = document.getElementById('btn01');
+  let clipboard = new ClipboardJS(btn);
+
+  clipboard.on('success', function (e) {
+    console.log(e);
+  });
+
+  clipboard.on('error', function (e) {
+    console.log(e);
+  });
+
+</script>

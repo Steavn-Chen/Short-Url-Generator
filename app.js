@@ -7,6 +7,8 @@ const bodyParser = require('body-parser')
 const { getShortUrl } = require('./tools/generator')
 
 const app = express()
+const baseUrl =
+  "localhost:3000" || "https://shrot-url-generator.herokuapp.com";
 const PORT = process.env.PORT || 3000
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/short-url-generator'
 const URL = require('./models/url.js')
@@ -32,6 +34,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
+  // console.log('process',process.env)
   res.render('index')
 })
 //  沒有找到就創建，但創建好的資料得 加 .toJSON()，不然會報錯
@@ -42,11 +45,15 @@ app.post('/', (req, res) => {
     return res.render("index", { error_msg: error_msg });
   }
   // 第一種寫法 findOrCreate
-  URL.findOrCreate({ name: req.body.url }, { name: req.body.url, url: getShortUrl() })
+  // URL.findOrCreate({ name: req.body.url }, { name: req.body.url, url: getShortUrl() })
+  URL.findOrCreate(
+    { name: req.body.url },
+    { name: req.body.url, url: `${baseUrl}/${getShortUrl()}` }
+  )
     .then((result) => {
       res.render("index", { shortUrl: result[0].toJSON() });
     })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err));
 
   // 第二種寫法
   // return URL.findOne({ name: req.body.url})
@@ -75,12 +82,18 @@ app.post('/', (req, res) => {
 
 app.get("/:short", (req, res) => {
   const params = req.params.short;
-  console.log(params);
-  URL.findOne({ url: `https://shrot-url-generator.herokuapp.com/${params}` }).then((result) => {
-    console.log(result);
-    // res.redirect('/')
-    res.redirect(result.name);
-  });
+  console.log('params',params);
+  console.log(`${baseUrl}/${params}`);
+  // if (params === null) {
+  //   return res.redirect('/')
+  // }
+   URL.findOne({ url: `${baseUrl}/${params}` }).then((result) => {
+     console.log('result',result);
+     // URL.findOne({ url: `https://shrot-url-generator.herokuapp.com/${params}` }).then((result) => {
+     //   console.log(result);
+     // res.redirect('/')
+     res.redirect(result.name);
+   });
 });
 
 app.listen(PORT, () => {

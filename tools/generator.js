@@ -16,7 +16,8 @@ function getShortUrl () {
   for (let i = 0; i < number; i++) {
     result += stringBox[getIndex(stringBox)];
   }
-  return `https://shrot-url-generator.herokuapp.com/${result}`
+  // return `https://shrot-url-generator.herokuapp.com/${result}`
+  return result
 }
 
 module.exports = { getShortUrl }

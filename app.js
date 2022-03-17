@@ -6,9 +6,13 @@ const findOrCreate = require("find-or-create-mongoose");
 const bodyParser = require('body-parser')
 const { getShortUrl } = require('./tools/generator')
 
+require('dotenv').config()
+
 const app = express()
-const baseUrl =
-  "localhost:3000" || "https://shrot-url-generator.herokuapp.com";
+// const baseUrl = process.env.baseUrl || "localhost:3000" ;
+const baseUrl = process.env.baseUrl !== 'localhost:3000' ? 'localhost:3000' : 
+process.env.baseUrl
+
 const PORT = process.env.PORT || 3000
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/short-url-generator'
 const URL = require('./models/url.js')
@@ -16,6 +20,8 @@ mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+console.log(baseUrl, PORT, MONGODB_URI);
 
 const db = mongoose.connection
 

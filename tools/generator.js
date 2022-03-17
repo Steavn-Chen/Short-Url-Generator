@@ -12,11 +12,11 @@ function getShortUrl () {
 
   const stringBox = (lowerCaseLetters + upperCasesLetters + numbers).split('')
   let result = "";
-  
+
   for (let i = 0; i < number; i++) {
     result += stringBox[getIndex(stringBox)];
   }
-  return `https://shrot-url-generator/herokuapp.com/${result}`
+  return `https://shrot-url-generator.herokuapp.com/${result}`
 }
 
 module.exports = { getShortUrl }

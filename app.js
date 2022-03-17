@@ -84,5 +84,5 @@ app.get("/:short", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`The web is running http://localhosy:${PORT}`)
+  console.log(`The web is running http://localhost:${PORT}`)
 })

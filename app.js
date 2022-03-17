@@ -73,7 +73,7 @@ app.post('/', (req, res) => {
 //     res.redirect(result.name);
 //   });
 
-app.get("/shrot-url-generator/herokuapp.com/:short", (req, res) => {
+app.get("/:short", (req, res) => {
   const params = req.params.short;
   console.log(params);
   URL.findOne({ url: `https://shrot-url-generator/herokuapp.com/${params}` }).then((result) => {

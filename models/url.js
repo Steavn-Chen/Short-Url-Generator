@@ -1,15 +1,20 @@
-const mongoose = require('mongoose')
-const findOrCreate = require("find-or-create-mongoose");
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const findOneOrCreate = require("mongoose-findoneorcreate");
+const findAnyoneOrCreate = require("mongoose-findanyoneorcreate");
+// const findOrCreate = require("find-or-create-mongoose");
+const Schema = mongoose.Schema;
 const urlSchema = new Schema({
-  name: {
+  inputUrl: {
     type: String,
     required: true
   },
-  url: {
+  outputShortUrl: {
     type: String,
-    required: true
+    required: true,
   },
-})
-urlSchema.plugin(findOrCreate);
-module.exports = mongoose.model('URL', urlSchema)
+});
+// urlSchema.plugin(findOrCreate);
+// urlSchema.plugin(findOneOrCreate, findAnyoneOrCreate);
+urlSchema.plugin(findOneOrCreate);
+// urlSchema.plugin( findAnyoneOrCreate);
+module.exports = mongoose.model("URL", urlSchema);

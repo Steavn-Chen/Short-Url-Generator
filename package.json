@@ -17,7 +17,6 @@
     "express-handlebars": "^5.3.4",
     "find-or-create-mongoose": "^0.1.2",
     "mongoose": "^5.12.15",
-    "mongoose-findanyoneorcreate": "^1.0.3",
     "mongoose-findoneorcreate": "^1.0.3"
   }
 }

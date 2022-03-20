@@ -100,9 +100,8 @@ function getShortUrlGenerator(shortUrlData, urlData) {
     console.log("現下拿到的隨機", randomString);
     // newsSortUrlData 為要進推進資料庫的變數
     if (newsSortUrlData.includes(randomString)) {
-
-    // numberBox為比對用變數
-    // if (numberBox.includes(randomString)) {
+      // numberBox為比對用變數
+      // if (numberBox.includes(randomString)) {
       result = "";
       console.log("比對後在陣列裡，就回傳就' ' 空字串。", result);
     } else {
@@ -129,9 +128,8 @@ function getShortUrlGenerator(shortUrlData, urlData) {
     // 回傳錯誤訊息。
     // newsSortUrlData 為要進推進資料庫的變數
     if (totalNumberOfArray === newsSortUrlData.length && checkUrl) {
-
-    // numberBox為比對用變數
-    // if (totalNumberOfArray === numberBox.length && checkUrl) {
+      // numberBox為比對用變數
+      // if (totalNumberOfArray === numberBox.length && checkUrl) {
       result = {
         ...newUrlData,
         message: "無法再產生新的字串，而且使用者輸入的字串在資料庫得回傳",
@@ -142,8 +140,8 @@ function getShortUrlGenerator(shortUrlData, urlData) {
 
     // newsSortUrlData 為要進推進資料庫的變數
     if (totalNumberOfArray === newsSortUrlData.length) {
-     // numberBox為比對用變數
-    // if (totalNumberOfArray === numberBox.length) {
+      // numberBox為比對用變數
+      // if (totalNumberOfArray === numberBox.length) {
       result = "短網址產生器無法再產生新的短網址。";
       console.log("newsSortUrlData.length", newsSortUrlData.length);
       console.log("numberBox.length", numberBox.length);

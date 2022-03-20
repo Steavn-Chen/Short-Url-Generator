@@ -36,10 +36,10 @@ const shortData = [
     outputShortUrl: "localhost:3000/10",
   },
 ];
-  //  設一個瀏覽器傳進來的 req.body.url = url 測試
- const url = "https://www.facebook.com";
+//  設一個瀏覽器傳進來的 req.body.url = url 測試
+const url = "https://www.facebook.com";
 
-// getShortUrlGenerator 函式的參數 
+// getShortUrlGenerator 函式的參數
 // shortUrlData 放進函式被比對的整包資料，
 // urlData 放進函式要比對的資料
 function getShortUrlGenerator(shortUrlData, urlData) {
@@ -90,7 +90,7 @@ function getShortUrlGenerator(shortUrlData, urlData) {
   // 直到產生出一組不在現有資料陣列的字串。
 
   // 目前while迴圈下不能設 (lapCount <= Math.pow(stringBox.length, stringLength)) 陣列總合數，因為產生的字串組合會有重覆的情形，
-  //所以把 Math.pow(stringBox.length, stringLength) 
+  //所以把 Math.pow(stringBox.length, stringLength)
   // 改為 Infinity 無限
 
   while (lapCount <= Infinity) {

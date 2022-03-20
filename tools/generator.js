@@ -13,7 +13,7 @@ const getRandomCombination = (length, CompareStrings) => {
   return randomString;
 };
 
-// getShortUrlGenerator 函式的參數 
+// getShortUrlGenerator 函式的參數
 // shortUrlData 放進函式被比對的整包資料，
 // urlData 放進函式要比對的資料
 function getShortUrlGenerator(shortUrlData, urlData) {
@@ -22,9 +22,11 @@ function getShortUrlGenerator(shortUrlData, urlData) {
   const numbers = "1234567890";
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/';
   // 設 stringBox 為原生字元陣列
-  const stringBox = (lowerCaseLetters + upperCasesLetters + numbers).split("");
+  // const stringBox = (lowerCaseLetters + upperCasesLetters + numbers).split("");
+  const stringBox = "012".split("");
   // 設stringLength 為要產生隨機字串的長度
-  const stringLength = 5;
+  // const stringLength = 5;
+  const stringLength = 2;
   // 設 lapCount 為 while 迴圈遁環次數
   let lapCount = 1;
   // 設 result 為回傳的結果
@@ -51,14 +53,15 @@ function getShortUrlGenerator(shortUrlData, urlData) {
       result = randomString;
       break;
     }
-    
+
     // 這段程式碼主要是要產生的字串組己達到最大值，不能再產生新的字串情況下，
     // 會回傳比對資料的結果，並且停止迴圈。
     if (totalNumberOfArray === newShortUrlData.length && checkUrl) {
-      result = {
-        ...newUrlData,
-        message: "無法再產生新的字串，而且使用者輸入的字串在資料庫得回傳",
-      };
+      // result = {
+      //   ...newUrlData,
+      //   message: "無法再產生新的字串，而且使用者輸入的字串在資料庫得回傳",
+      // };
+      result = newUrlData;
       break;
     }
 

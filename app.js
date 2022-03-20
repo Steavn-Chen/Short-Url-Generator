@@ -71,7 +71,6 @@ app.post('/', (req, res) => {
     {
       $project: {
         inputUrl: "$inputUrl",
-        shortString: "$outputShortUrl",
         outputShortUrl: "$outputShortUrl",
       },
     },

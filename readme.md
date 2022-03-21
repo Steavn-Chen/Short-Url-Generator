@@ -12,7 +12,7 @@
 
 - 將專案 clone 到本地端
 
-https://github.com/Steavn-Chen/AC_Expense-Teacker
+https://github.com/Steavn-Chen/Short-Url-Generator-Heroku.git
 
 - 進入到專案資料夾
 ```

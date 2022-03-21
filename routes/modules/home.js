@@ -3,7 +3,7 @@ const router = express.Router()
 // const findOneOrCreate = require("mongoose-findoneorcreate");
 const { getShortUrlGenerator } = require("../../tools/generator.js");
 const URL = require('../../models/url.js')
-
+const baseUrl = process.env.baseUrl;
 router.get("/", (req, res) => {
   res.render("index");
 });
@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
         { inputUrl: req.body.url },
         {
           inputUrl: req.body.url,
-          outputShortUrl: `localhost:3000/${shortUrl}`,
+          outputShortUrl: `${baseUrl}/${shortUrl}`,
         }
       )
         .then((url) => {
@@ -56,7 +56,7 @@ router.get("/:short", (req, res) => {
   if (params === null) {
     return res.redirect("/")
   }
-  URL.findOne({ outputShortUrl: `localhost:3000/${params}` })
+  URL.findOne({ outputShortUrl: `${baseUrl}/${params}` })
     .then((result) => {
       if (result === null) {
         error_msg = "此網址錯誤，請按此連結";

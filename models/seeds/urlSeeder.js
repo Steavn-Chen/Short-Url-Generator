@@ -1,22 +1,22 @@
 const URL = require('../url')
 const db = require('../../config/mongoose.js')
-
+const baseUrl = process.env.baseUrl;
 const shortData = [
   {
     inputUrl: "https://github.com/",
-    outputShortUrl: 'localhost:3000/00',
+    outputShortUrl: `${baseUrl}/01234`,
   },
   {
     inputUrl: "https://www.facebook.com",
-    outputShortUrl: "localhost:3000/11",
+    outputShortUrl: `${baseUrl}/abcde`,
   },
   {
     inputUrl: "https://www.yahoo.com.tw",
-    outputShortUrl: "localhost:3000/01",
+    outputShortUrl: `${baseUrl}/ABCDE`,
   },
   {
     inputUrl: "https://www.pchome.com.tw",
-    outputShortUrl: "localhost:3000/10",
+    outputShortUrl: `${baseUrl}/ASDQW`,
   },
 ];
 

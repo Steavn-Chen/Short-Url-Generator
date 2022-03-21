@@ -8,38 +8,27 @@
         alt="..."
         style="width:200px; border: none"
       />
-
       {{#if error_msg1}}
         <div class="alert alert-danger" role="alert">
           {{error_msg1}}，暫時請不要使用。
           <br />
-          或者回到首頁<a href="/" class="alert-link">短網址產生器</a>。寫信告知站長。 謝謝 !
+          或者回到首頁<a href="/" class="alert-link" style="font: size 30px;">短網址產生器</a>。寫信告知站長。 謝謝 !
         </div>
       {{else}}
         {{#if error_msg}}
-          <div class="alert alert-danger" role="alert">
+          <div class="alert alert-danger" role="alert" style="font-family: 'Kanit', sans-serif;font-size:30px;">
             {{error_msg}}
             <a href="/" class="alert-link">短網址產生器</a>。
             重新獲得一個短網址。謝謝 !
           </div>
         {{else}}
-
           {{#if shortUrl}}
-            <h2 style="font-family: 'Kanit', sans-serif;" class="mt-5">Success!
-              Please use this link.</h2>
             <div class="alert alert-success" style="font-family: 'Kanit', sans-serif;font-size:30px;" role="alert">
-              Success!Please use this link.
+              成功 ! 請使用這個連結。
             </div>  
-            <a href="{{shortUrl.inputUrl}}">{{shortUrl.outputShortUrl}}</a>
-            <div class="col-3 d-grid mt-3">
-              {{!-- <input type="url" name="" id="copyUrl" value="{{shortUrl.inputUrl}}" hidden> --}}
-              {{! <button type="button" class="btn btn-outline-primary" id="copyBtn">Copy</button> }}
-              {{! <button type="button" class="btn btn-outline-primary" id="copyBtn" onclick="myFunction()">Copy</button>
-        }}
-            </div>
+            <a href="{{shortUrl.inputUrl}}" style="font-size: 20px;">{{shortUrl.outputShortUrl}}</a>
             {{! 複制按紐 input }}
             <div class="clipboard-example d-grid gap-2 col-6 mx-auto mt-3">
-              {{! <div class="input-group mb-3"> }}
               <input
                 id="in01"
                 type="text"
@@ -48,34 +37,21 @@
                 aria-label="BTC Address"
                 aria-describedby="btn01"
                 value="{{shortUrl.outputShortUrl}}"
+                style="font-size: 20px;"
                 readonly
               />
               <button
                 id="btn01"
-                class="btn btn-secondary mt-3 mx-auto col-6"
+                class="btn btn-secondary mt-3 mx-auto col-6 a_demo_four"
                 type="button"
                 data-clipboard-demo=""
                 data-clipboard-target="#in01"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="Copy to Clipboard"
+                style="font-size: 20px;"
               >Copy</button>
-              {{!
-        </div> }}
             </div>
-
-            {{!-- <div class="clipboard-example align-items-center w-50">
-        <div class="input-group mb-3">
-          <input id="in01" type="text" class="form-control" placeholder="BTC Address..." aria-label="BTC Address"
-            aria-describedby="btn01" value="{{shortUrl.outputShortUrl}}" readonly>
-          <button id="btn01" class="btn btn-secondary" type="button" data-clipboard-demo=""
-            data-clipboard-target="#in01" data-bs-toggle="tooltip" data-bs-placement="bottom"
-            title="Copy to Clipboard">Copy</button>
-        </div>
-      </div> --}}
-
-            {{!
-    </div> }}
           {{else}}
             <div class="col-md-6 mt-5">
               <input
@@ -84,6 +60,7 @@
                 placeholder="Input URL here"
                 aria-label=".form-control-lg example"
                 name="url"
+                style="font-size: 20px;"
                 required
               />
               <div class="invalid-feedback">
@@ -94,10 +71,7 @@
               </div>
             </div>
             <div class="col-3 d-grid mt-3">
-              <button
-                type="submit"
-                class="btn btn-outline-primary"
-              >Shorten</button>
+              <button type="submit" class="a_demo_four" style="font-size: 20px;">Shorten</button>
             </div>
           {{/if}}
         {{/if}}

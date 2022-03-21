@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
-// const findOneOrCreate = require("mongoose-findoneorcreate");
 const { getShortUrlGenerator } = require("../../tools/generator.js");
 const URL = require('../../models/url.js')
-const baseUrl = process.env.baseUrl;
 router.get("/", (req, res) => {
   res.render("index");
 });
@@ -39,7 +37,7 @@ router.post("/", (req, res) => {
         { inputUrl: req.body.url },
         {
           inputUrl: req.body.url,
-          outputShortUrl: `${baseUrl}/${shortUrl}`,
+          outputShortUrl: `https://shrot-url-generator.herokuapp.com/${shortUrl}`,
         }
       )
         .then((url) => {
@@ -56,7 +54,9 @@ router.get("/:short", (req, res) => {
   if (params === null) {
     return res.redirect("/")
   }
-  URL.findOne({ outputShortUrl: `${baseUrl}/${params}` })
+  URL.findOne({
+    outputShortUrl: `$https://shrot-url-generator.herokuapp.com/${params}`,
+  })
     .then((result) => {
       if (result === null) {
         error_msg = "此網址錯誤，請按此連結";

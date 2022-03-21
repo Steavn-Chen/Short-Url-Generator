@@ -1,22 +1,21 @@
 const URL = require('../url')
 const db = require('../../config/mongoose.js')
-const baseUrl = process.env.baseUrl;
 const shortData = [
   {
     inputUrl: "https://github.com/",
-    outputShortUrl: `${baseUrl}/01234`,
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/01234`,
   },
   {
     inputUrl: "https://www.facebook.com",
-    outputShortUrl: `${baseUrl}/abcde`,
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/abcde`,
   },
   {
     inputUrl: "https://www.yahoo.com.tw",
-    outputShortUrl: `${baseUrl}/ABCDE`,
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/ABCDE`,
   },
   {
     inputUrl: "https://www.pchome.com.tw",
-    outputShortUrl: `${baseUrl}/ASDQW`,
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/ASDQW`,
   },
 ];
 

@@ -1,4 +1,4 @@
-### Short-URL-Generator 短網址生器 本地版
+### Short-URL-Generator 短網址生器 HEROKU版本
 
 ![restaurant-image](https://github.com/Steavn-Chen/AC_Expense-Teacker/blob/main/public/image/%E8%A8%BB%E5%86%8A%E9%A0%81.PNG)
 
@@ -26,7 +26,7 @@ https://github.com/Steavn-Chen/Short-Url-Generator-Heroku.git
 ```
 - 若終端機出顥示出以下字串，表示成功。
 ```
- The Short-URL-Generator web is running http://localhost:3000
+   The Short-URL-Generator web is running https://shrot-url-generator.herokuapp.com
 ```
   出現 mongodb is connected ! ，代表 mongodb 資料庫連接成功
 

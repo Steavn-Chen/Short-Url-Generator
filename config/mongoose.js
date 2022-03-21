@@ -1,4 +1,4 @@
-const  mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/short-url-generator";
@@ -7,12 +7,14 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
-const db = mongoose.connection
+const db = mongoose.connection;
 
-db.on('error', () => {
-  console.log('mongoose is error')
-})
+db.on("error", () => {
+  console.log("mongoose is error");
+});
 
-db.once('open', () => {
-  console.log('mongoose is connected !')
-})
+db.once("open", () => {
+  console.log("mongoose is connected !");
+});
+
+module.exports = db

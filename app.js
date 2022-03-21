@@ -17,5 +17,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes)
 
 app.listen(PORT, () => {
-  console.log(`The web is running http://localhost:${PORT}`);
+  console.log(`The Short-URL-Generator web is running http://localhost:${PORT}`);
 });

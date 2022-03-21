@@ -54,7 +54,7 @@ router.get("/:short", (req, res) => {
   const params = req.params.short;
   let error_msg;
   if (params === null) {
-    return res.redirect("/");
+    return res.redirect("/")
   }
   URL.findOne({ outputShortUrl: `localhost:3000/${params}` })
     .then((result) => {

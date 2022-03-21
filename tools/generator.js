@@ -36,7 +36,7 @@ function getShortUrlGenerator(shortUrlData, urlData) {
   const newUrlData = shortUrlData.find((i) => i.inputUrl === urlData);
   // 把 瀏覽器 request 來的資料(shortUrlData)處理。
   const newShortUrlData = shortUrlData.map((i) =>
-    i.outputShortUrl.replace("localhost:3000/", "")
+    i.outputShortUrl.replace("https://shrot-url-generator.herokuapp.com/", "")
   );
 
   // 把隨機一組產生的字串拿到現有的資料陣列去比對，

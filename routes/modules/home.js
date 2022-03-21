@@ -55,7 +55,7 @@ router.get("/:short", (req, res) => {
     return res.redirect("/")
   }
   URL.findOne({
-    outputShortUrl: `$https://shrot-url-generator.herokuapp.com/${params}`,
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/${params}`,
   })
     .then((result) => {
       if (result === null) {

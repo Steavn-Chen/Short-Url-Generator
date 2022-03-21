@@ -8,6 +8,17 @@
 - 使用者輸入過的網址會被儲存在短網址產生器伺服器資料庫中，當下次再輸入同樣的網址時是會得到第一次產生的短網址。
 - 當產生器無法再產生新的字串組時，會顯示錯誤訊息，或者請使用者寫信通知站長。
 
+## 種子資料
+  總共四筆:
+  1. inputUrl: "https://github.com/",
+     outputShortUrl: `https://shrot-url-generator.herokuapp.com/01234`
+  2. inputUrl: "https://www.facebook.com",
+     outputShortUrl: `https://shrot-url-generator.herokuapp.com/abcde`
+  3. inputUrl: "https://www.yahoo.com.tw",
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/ABCDE`
+  4. inputUrl: "https://www.pchome.com.tw",
+    outputShortUrl: `https://shrot-url-generator.herokuapp.com/ASDQW`
+
 ## 啓動方式
 
 - 將專案 clone 到本地端

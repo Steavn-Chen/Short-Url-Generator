@@ -1,6 +1,6 @@
 ### Short-URL-Generator 短網址生器 HEROKU版本
 
-![restaurant-image](https://github.com/Steavn-Chen/AC_Expense-Teacker/blob/main/public/image/%E8%A8%BB%E5%86%8A%E9%A0%81.PNG)
+![restaurant-image](https://github.com/Steavn-Chen/Short-Url-Generator-Heroku/blob/main/%E7%9F%AD%E7%B6%B2%E5%9D%80%E7%94%A2%E5%99%A8%E5%9C%96%E6%AA%94-2.PNG)
 
 ## 功能介紹
 

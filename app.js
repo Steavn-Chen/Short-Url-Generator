@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const routes = require('./routes')
 require('./config/mongoose.js')
 require('dotenv').config()
-const baseUrl = process.env.baseUrl
+const BASE_URL = process.env.BASE_URL;
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -17,5 +17,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes)
 
 app.listen(PORT, () => {
-  console.log(`The Short-URL-Generator web is running ${baseUrl}`);
+  console.log(`The Short-URL-Generator web is running ${BASE_URL}`);
 });

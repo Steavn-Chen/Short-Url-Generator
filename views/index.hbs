@@ -8,16 +8,16 @@
         alt="..."
         style="width:200px; border: none"
       />
-      {{#if error_msg1}}
+      {{#if errorMsg1}}
         <div class="alert alert-danger" role="alert">
-          {{error_msg1}}，暫時請不要使用。
+          {{errorMsg1}}，暫時請不要使用。
           <br />
           或者回到首頁<a href="/" class="alert-link" style="font: size 30px;">短網址產生器</a>。寫信告知站長。 謝謝 !
         </div>
       {{else}}
-        {{#if error_msg}}
+        {{#if errorMsg}}
           <div class="alert alert-danger" role="alert" style="font-family: 'Kanit', sans-serif;font-size:30px;">
-            {{error_msg}}
+            {{errorMsg}}
             <a href="/" class="alert-link">短網址產生器</a>。
             重新獲得一個短網址。謝謝 !
           </div>

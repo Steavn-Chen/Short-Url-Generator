@@ -2,14 +2,13 @@ const express = require('express')
 const router = express.Router()
 const { getShortUrlGenerator } = require('../../tools/generator.js')
 
-const localUrl = "http://localhost:3000";
-const BASE_URL = process.env.BASE_URL || localUrl;
-const PORT = process.env.PORT || 3000
+const localUrl = 'http://localhost:3000'
+const BASE_URL = process.env.BASE_URL || localUrl
 
 const URL = require('../../models/url.js')
 router.get('/', (req, res) => {
   console.log(process.env.PORT)
-  console.log('NODE_ENV',process.env.NODE_ENV);
+  console.log('NODE_ENV', process.env.NODE_ENV)
   console.log('在首頁')
   res.render('index')
 })
@@ -46,13 +45,13 @@ router.post('/', (req, res) => {
         {
           inputUrl: req.body.url,
           // outputShortUrl: `https://shrot-url-generator.herokuapp.com/${shortUrl}`
-          outputShortUrl: `${BASE_URL}/${shortUrl}`,
+          outputShortUrl: `${BASE_URL}/${shortUrl}`
         }
       )
         .then((url) => {
-          return res.render("index", { shortUrl: url.toJSON() });
+          return res.render('index', { shortUrl: url.toJSON() })
         })
-        .catch((err) => console.error(err));
+        .catch((err) => console.error(err))
     })
     .catch((err) => console.error(err))
 })
@@ -65,16 +64,16 @@ router.get('/:short', (req, res) => {
   }
   URL.findOne({
     // outputShortUrl: `https://shrot-url-generator.herokuapp.com/${params}`
-    outputShortUrl: `${BASE_URL}/${params}`,
+    outputShortUrl: `${BASE_URL}/${params}`
   })
     .then((result) => {
       if (result === null) {
-        errorMsg = "此網址錯誤，請按此連結";
-        return res.render("index", { errorMsg: errorMsg });
+        errorMsg = '此網址錯誤，請按此連結'
+        return res.render('index', { errorMsg: errorMsg })
       }
-      return res.redirect(result.inputUrl);
+      return res.redirect(result.inputUrl)
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
 })
 
 module.exports = router

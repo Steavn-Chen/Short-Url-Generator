@@ -17,8 +17,7 @@ const getRandomCombination = (length, CompareStrings) => {
 // shortUrlData 放進函式被比對的整包資料，
 // urlData 放進函式要比對的資料
 function getShortUrlGenerator (shortUrlData, urlData) {
-
-  const localUrl = "http://localhost:3000";
+  const localUrl = 'http://localhost:3000'
   const BASE_URL = process.env.BASE_URL || localUrl
   // const PORT = process.env.PORT || 3000
 
@@ -43,7 +42,7 @@ function getShortUrlGenerator (shortUrlData, urlData) {
   const newShortUrlData = shortUrlData.map((i) =>
     // i.outputShortUrl.replace('https://shrot-url-generator.herokuapp.com/', '')
     i.outputShortUrl.replace(`${BASE_URL}/`, '')
-  );
+  )
 
   // 把隨機一組產生的字串拿到現有的資料陣列去比對，
   // 如果隨機字串有在現有的資料陣列出現就在產生一組新的隨機字串,

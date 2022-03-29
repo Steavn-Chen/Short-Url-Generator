@@ -1,44 +1,26 @@
 const URL = require('../url')
 const db = require('../../config/mongoose.js')
-// const shortData = [
-//   {
-//     inputUrl: "https://github.com/",
-//     outputShortUrl: `${base_url}/01234`,
-//   },
-//   {
-//     inputUrl: "https://www.facebook.com",
-//     outputShortUrl: `${base_url}/abcde`,
-//   },
-//   {
-//     inputUrl: "https://www.yahoo.com.tw",
-//     outputShortUrl: `${base_url}/ABCDE`,
-//   },
-//   {
-//     inputUrl: "https://www.pchome.com.tw",
-//     outputShortUrl: `${base_url}/ASDQW`,
-//   },
-// ];
-// const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || 'http://localhost'
-const localUrl = BASE_URL + ':3000'
+
+const localUrl = 'http://localhost:3000'
+const BASE_URL = process.env.BASE_URL || localUrl
 const shortData = [
   {
     inputUrl: "https://github.com/",
-    outputShortUrl: `${localUrl}/01234`,
+    outputShortUrl: `${BASE_URL}/01234`,
   },
   {
     inputUrl: "https://www.facebook.com",
-    outputShortUrl: `${localUrl}/abcde`,
+    outputShortUrl: `${BASE_URL}/abcde`,
   },
   {
     inputUrl: "https://www.yahoo.com.tw",
-    outputShortUrl: `${localUrl}/ABCDE`,
+    outputShortUrl: `${BASE_URL}/ABCDE`,
   },
   {
     inputUrl: "https://www.pchome.com.tw",
-    outputShortUrl: `${localUrl}/ASDQW`,
+    outputShortUrl: `${BASE_URL}/ASDQW`,
   },
-];
+]
 
 db.once('open', () => {
   return URL.insertMany(shortData)

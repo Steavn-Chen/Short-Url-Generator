@@ -17,10 +17,7 @@ const getRandomCombination = (length, CompareStrings) => {
 // shortUrlData 放進函式被比對的整包資料，
 // urlData 放進函式要比對的資料
 function getShortUrlGenerator (shortUrlData, urlData) {
-  const localUrl = 'http://localhost:3000'
-  const BASE_URL = process.env.BASE_URL || localUrl
-  // const PORT = process.env.PORT || 3000
-
+  const BASE_URL = process.env.BASE_URL
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
   const upperCasesLetters = lowerCaseLetters.toLocaleUpperCase()
   const numbers = '1234567890'

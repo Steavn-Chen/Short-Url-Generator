@@ -2,14 +2,10 @@ const express = require('express')
 const router = express.Router()
 const { getShortUrlGenerator } = require('../../tools/generator.js')
 
-const localUrl = 'http://localhost:3000'
-const BASE_URL = process.env.BASE_URL || localUrl
-
+const BASE_URL = process.env.BASE_URL
 const URL = require('../../models/url.js')
+
 router.get('/', (req, res) => {
-  console.log(process.env.PORT)
-  console.log('NODE_ENV', process.env.NODE_ENV)
-  console.log('在首頁')
   res.render('index')
 })
 //  沒有找到就創建，但創建好的資料得 加 .toJSON()，不然會報錯
@@ -44,7 +40,6 @@ router.post('/', (req, res) => {
         { inputUrl: req.body.url },
         {
           inputUrl: req.body.url,
-          // outputShortUrl: `https://shrot-url-generator.herokuapp.com/${shortUrl}`
           outputShortUrl: `${BASE_URL}/${shortUrl}`
         }
       )
@@ -63,7 +58,6 @@ router.get('/:short', (req, res) => {
     return res.redirect('/')
   }
   URL.findOne({
-    // outputShortUrl: `https://shrot-url-generator.herokuapp.com/${params}`
     outputShortUrl: `${BASE_URL}/${params}`
   })
     .then((result) => {

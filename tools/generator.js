@@ -14,9 +14,8 @@ const getRandomCombination = (length, CompareStrings) => {
 }
 
 // getShortUrlGenerator 函式的參數
-// shortUrlData 放進函式被比對的整包資料，
-// urlData 放進函式要比對的資料
-function getShortUrlGenerator (shortUrlData, urlData) {
+// shortUrlData 放進函式的整包資料，
+function getShortUrlGenerator (shortUrlData) {
   const BASE_URL = process.env.BASE_URL
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
   const upperCasesLetters = lowerCaseLetters.toLocaleUpperCase()
@@ -31,13 +30,8 @@ function getShortUrlGenerator (shortUrlData, urlData) {
   let result = ''
   // 設 totalNumberOfArray 為字串組合最大值
   const totalNumberOfArray = Math.pow(stringBox.length, stringLength)
-  // 設 checkUrl 比對資料庫跟瀏覽器資料的結果， 回傳值為 true/false 。
-  const checkUrl = shortUrlData.some((i) => i.inputUrl === urlData)
-  // 設 newUrlData 比對資料庫跟瀏覽器資料的結果, 回傳值比對成功後一包資料。
-  const newUrlData = shortUrlData.find((i) => i.inputUrl === urlData)
   // 把 瀏覽器 request 來的資料(shortUrlData)處理。
   const newShortUrlData = shortUrlData.map((i) =>
-    // i.outputShortUrl.replace('https://shrot-url-generator.herokuapp.com/', '')
     i.outputShortUrl.replace(`${BASE_URL}/`, '')
   )
 
@@ -53,19 +47,12 @@ function getShortUrlGenerator (shortUrlData, urlData) {
       break
     }
 
-    // 這段程式碼主要是要產生的字串組己達到最大值，不能再產生新的字串情況下，
-    // 會回傳比對資料的結果，並且停止迴圈。
-    if (totalNumberOfArray === newShortUrlData.length && checkUrl) {
-      result = newUrlData
-      break
-    }
-
     // 這一段程式碼主要防止有人惡意重覆產生字串組合，
     // 導致伺服器陷入無限迴圈，造成伺服器崩潰。
     // 產生器可以產生字串組的最大值與資料庫資料相等狀況下
     // 便停止迴圈並回傳錯誤誤息
     if (totalNumberOfArray === newShortUrlData.length) {
-      result = '短網址產生器無法再產生新的短網址'
+      result = ''
       break
     }
     lapCount = lapCount + 1

@@ -8,7 +8,7 @@ const URL = require('../../models/url.js')
 router.get('/', (req, res) => {
   res.render('index')
 })
-//  沒有找到就創建，但創建好的資料得 加 .toJSON()，不然會報錯
+
 router.post('/', (req, res) => {
   let errorMsg = ''
   let errorMsg1 = ''
@@ -30,25 +30,29 @@ router.post('/', (req, res) => {
       }
     }
   ])
-    .then((shortData) => {
-      const shortUrl = getShortUrlGenerator(shortData, req.body.url)
-      if (shortUrl === '短網址產生器無法再產生新的短網址') {
-        errorMsg1 = '短網址產生器無法再產生新的短網址'
-        return res.render('index', { errorMsg1: errorMsg1 })
-      }
-      return URL.findOneOrCreate(
-        { inputUrl: req.body.url },
-        {
-          inputUrl: req.body.url,
-          outputShortUrl: `${BASE_URL}/${shortUrl}`
-        }
-      )
-        .then((url) => {
-          return res.render('index', { shortUrl: url.toJSON() })
+    .then(shortData => {
+      return URL.findOne({ inputUrl: req.body.url })
+        .then(url => {
+          const shortUrl = getShortUrlGenerator(shortData)
+          if (url) {
+            return res.render('index', { shortUrl: url.toJSON() })
+          }
+          if (shortUrl === '') {
+            errorMsg1 = '短網址產生器無法再產生新的短網址'
+            return res.render('index', { errorMsg1: errorMsg1 })
+          }
+          return URL.create({
+            inputUrl: req.body.url,
+            outputShortUrl: `${BASE_URL}/${shortUrl}`
+          })
+            .then(url => {
+              return res.render('index', { shortUrl: url.toJSON() })
+            })
+            .catch(err => console.error(err))
         })
-        .catch((err) => console.error(err))
+        .catch(err => console.error(err))
     })
-    .catch((err) => console.error(err))
+    .catch(err => console.error(err))
 })
 
 router.get('/:short', (req, res) => {

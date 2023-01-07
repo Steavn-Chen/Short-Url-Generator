@@ -2,108 +2,81 @@
   <form action="/" method="post" class="needs-validation" novalidate>
     <div class="shortener d-flex flex-column align-items-center">
       <h1 style="font-family: 'Kanit', sans-serif;">短網址產器</h1>
-      <img
-        src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
-        class="img-thumbnail my-5"
-        alt="..."
-        style="width:200px; border: none"
-      />
+      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
+        class="img-thumbnail my-5" alt="..." style="width:200px; border: none" />
       {{#if errorMsg1}}
-        <div class="alert alert-danger" role="alert">
-          {{errorMsg1}}，暫時請不要使用。
-          <br />
-          或者回到首頁<a href="/" class="alert-link" style="font: size 30px;">短網址產生器</a>。寫信告知站長。 謝謝 !
-        </div>
+      <div class="alert alert-danger" role="alert">
+        {{errorMsg1}}，暫時請不要使用。
+        <br />
+        或者回到首頁<a href="/" class="alert-link" style="font: size 30px;">短網址產生器</a>。寫信告知站長。 謝謝 !
+      </div>
       {{else}}
-        {{#if errorMsg}}
-          <div class="alert alert-danger" role="alert" style="font-family: 'Kanit', sans-serif;font-size:30px;">
-            {{errorMsg}}
-            <a href="/" class="alert-link">短網址產生器</a>。
-            重新獲得一個短網址。謝謝 !
-          </div>
-        {{else}}
-          {{#if shortUrl}}
-            <div class="alert alert-success" style="font-family: 'Kanit', sans-serif;font-size:30px;" role="alert">
-              成功 ! 請使用這個連結。
-            </div>  
-            <a href="{{shortUrl.inputUrl}}" style="font-size: 20px;">{{shortUrl.outputShortUrl}}</a>
-            {{! 複制按紐 input }}
-            <div class="clipboard-example d-grid gap-2 col-6 mx-auto mt-3">
-              <input
-                id="in01"
-                type="text"
-                class="form-control"
-                placeholder="BTC Address..."
-                aria-label="BTC Address"
-                aria-describedby="btn01"
-                value="{{shortUrl.outputShortUrl}}"
-                style="font-size: 20px;"
-                readonly
-              />
-              <button
-                id="btn01"
-                class="btn btn-secondary mt-3 mx-auto col-6 a_demo_four"
-                type="button"
-                data-clipboard-demo=""
-                data-clipboard-target="#in01"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="Copy to Clipboard"
-                style="font-size: 20px;"
-              >Copy</button>
-            </div>
-          {{else}}
-            <div class="col-md-6 mt-5">
-              <input
-                class="form-control form-control-lg"
-                type="url"
-                placeholder="Input URL here"
-                aria-label=".form-control-lg example"
-                name="url"
-                style="font-size: 20px;"
-                required
-              />
-              <div class="invalid-feedback">
-                請輸入正確的網址 !
-              </div>
-              <div class="valid-feedback">
-                輸入的網址正確。
-              </div>
-            </div>
-            <div class="col-3 d-grid mt-3">
-              <button type="submit" class="a_demo_four" style="font-size: 20px;">Shorten</button>
-            </div>
-          {{/if}}
-        {{/if}}
+      {{#if errorMsg}}
+      <div class="alert alert-danger" role="alert" style="font-family: 'Kanit', sans-serif;font-size:30px;">
+        {{errorMsg}}
+        <a href="/" class="alert-link">短網址產生器</a>。
+        重新獲得一個短網址。謝謝 !
+      </div>
+      {{else}}
+      {{#if shortUrl}}
+      <div class="alert alert-success" style="font-family: 'Kanit', sans-serif;font-size:30px;" role="alert">
+        成功 ! 請使用這個連結。
+      </div>
+      <a href="{{shortUrl.inputUrl}}" style="font-size: 20px;">{{shortUrl.outputShortUrl}}</a>
+      {{! 複制按紐 input }}
+      <div class="clipboard-example d-grid gap-2 col-6 mx-auto mt-3">
+        <input id="in01" type="text" class="form-control" placeholder="BTC Address..." aria-label="BTC Address"
+          aria-describedby="btn01" value="{{shortUrl.outputShortUrl}}" style="font-size: 20px;" readonly />
+        <button id="btn01" class="btn btn-secondary mt-3 mx-auto col-6 a_demo_four" type="button" data-clipboard-demo=""
+          data-clipboard-target="#in01" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copy to Clipboard"
+          style="font-size: 20px;">Copy</button>
+      </div>
+      {{else}}
+      <div class="col-md-6 mt-5">
+        <input class="form-control form-control-lg" type="url" placeholder="Input URL here"
+          aria-label=".form-control-lg example" name="url" style="font-size: 20px;" required />
+        <div class="invalid-feedback">
+          請輸入正確的網址 !
+        </div>
+        <div class="valid-feedback">
+          輸入的網址正確。
+        </div>
+      </div>
+      <div class="col-3 d-grid mt-3">
+        <button type="submit" class="a_demo_four" style="font-size: 20px;">Shorten</button>
+      </div>
+      {{/if}}
+      {{/if}}
       {{/if}}
     </div>
   </form>
 </div>
 
 <script>
-  (function () { 
-    "use strict"; 
+  (function () {
+    "use strict";
     // Fetch all the forms we want to apply custom bootstrap validation styles to 
-    var forms = document.querySelectorAll(".needs-validation"); 
+    var forms = document.querySelectorAll(".needs-validation");
     // Loop over them and prevent submission 
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener("submit", function (event) { 
-      console.log(event) 
-    if (!form.checkValidity()) { 
-      event.preventDefault(); event.stopPropagation(); 
-    }
-    form.classList.add("was-validated"); 
-  }, false); });
-   })(); 
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener("submit", function (event) {
+        console.log(event)
+        if (!form.checkValidity()) {
+          event.preventDefault(); event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      }, false);
+    });
+  })();
 
-   // 複製按紐 javascript 
-  let btn = document.getElementById('btn01'); 
-  let clipboard = new ClipboardJS(btn); 
-  clipboard.on('success', function (e) { 
-    console.log(e); 
-  });
-  clipboard.on('error', function (e) { 
+  // 複製按紐 javascript 
+  let btn = document.getElementById('btn01');
+  let clipboard = new ClipboardJS(btn);
+  clipboard.on('success', function (e) {
     console.log(e);
-   });
+  });
+  clipboard.on('error', function (e) {
+    console.log(e);
+  });
 
 </script>

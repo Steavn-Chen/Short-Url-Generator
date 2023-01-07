@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
   let errorMsg1 = ''
   if (req.body.url === '') {
     errorMsg = '輸入網址的欄位不能為空，請按此連結'
-    return res.render('index', { errorMsg: errorMsg })
+    return res.render('index', { errorMsg })
   }
   return URL.aggregate([
     {
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
           }
           if (shortUrl === '') {
             errorMsg1 = '短網址產生器無法再產生新的短網址'
-            return res.render('index', { errorMsg1: errorMsg1 })
+            return res.render('index', { errorMsg1 })
           }
           return URL.create({
             inputUrl: req.body.url,
@@ -67,7 +67,7 @@ router.get('/:short', (req, res) => {
     .then((result) => {
       if (result === null) {
         errorMsg = '此網址錯誤，請按此連結'
-        return res.render('index', { errorMsg: errorMsg })
+        return res.render('index', { errorMsg })
       }
       return res.redirect(result.inputUrl)
     })
